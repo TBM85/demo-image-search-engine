@@ -27,7 +27,7 @@ const ImageOutput = () => {
     <Container className={classes.ImageContainer}>
       <ImageList cols={4} className={classes.ImageList}>
         {images.map((img) => (
-          <ImageListItem key={img.id}>
+          <ImageListItem key={img.id} className={classes.ImageListItem}>
             <img src={img.largeImageURL} alt={img.tags} />
           </ImageListItem>
         ))}
