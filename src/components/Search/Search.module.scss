@@ -1,10 +1,6 @@
 .Search {
-  display: flex !important;
-  align-items: center;
-  position: relative;
-
   .SearchIcon {
-    padding: 0px 0.7em;
+    padding: 2em 0.7em;
     position: absolute;
     color: rgba(0, 0, 0, 0.54);
   }
@@ -23,6 +19,18 @@
     fieldset {
       padding: 0 30px !important;
     }
+  }
+}
+
+.ImageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    margin: 0.5em;
+    width: 18em;
+    height: 12em;
   }
 }
 
