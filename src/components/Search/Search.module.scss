@@ -1,0 +1,28 @@
+.Search {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+
+  .SearchIcon {
+    padding: 0px 0.7em;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  .TextField {
+    margin: 1em auto !important;
+
+    label {
+      margin: auto 1.5em;
+    }
+    
+    input {
+      padding-left: 2.5em !important;
+    }
+    
+    fieldset {
+      padding: 0 30px !important;
+    }
+  }
+}
+
