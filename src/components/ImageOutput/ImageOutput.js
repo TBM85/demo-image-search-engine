@@ -19,6 +19,10 @@ const ImageOutput = (props) => {
     setSelectedImg(imgSelected);
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Container className={classes.ImageContainer}>
       <ImageList cols={4} className={classes.ImageList}>
@@ -37,6 +41,7 @@ const ImageOutput = (props) => {
         className={classes.Dialog}
         modal="true"
         open={isOpen}
+        onClose={handleClose}
         maxWidth="md"
       >
         <img src={selectedImg} alt="" />
