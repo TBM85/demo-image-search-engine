@@ -5,6 +5,7 @@ import {
   ImageList,
   ImageListItem,
 } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
 
 import classes from "./ImageOutput.module.scss";
 
@@ -44,9 +45,9 @@ const ImageOutput = (props) => {
         onClose={handleClose}
         maxWidth="md"
       >
+        <CloseIcon onClick={handleClose} className={classes.CloseIcon} />
         <img src={selectedImg} alt="" />
       </Dialog>
-
     </Container>
   );
 };

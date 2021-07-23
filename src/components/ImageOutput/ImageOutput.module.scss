@@ -19,3 +19,12 @@
 .ImageListItem {
   cursor: pointer;
 }
+
+.CloseIcon {
+  position: absolute;
+  background: white;
+  border-radius: 0.2em;
+  padding: 0.2em;
+  right: 0;
+  cursor: pointer;
+}
