@@ -19,35 +19,3 @@
 .ImageListItem {
   cursor: pointer;
 }
-
-.CloseIcon {
-  position: absolute;
-  background: white;
-  border-radius: 0.2em;
-  padding: 0.2em;
-  right: 0;
-  cursor: pointer;
-}
-
-.InfoIcon {
-  position: absolute;
-  color: white;
-  font-size: 2em !important;
-  padding: 0.25em;
-  bottom: 0;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.InfoContainer {
-  position: absolute;
-  bottom: 0;
-  background: black;
-  width: 100%;
-  color: white;
-  opacity: 0.8;
-
-  p {
-    padding-left: 3em;
-  }
-}

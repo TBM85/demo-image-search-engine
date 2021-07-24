@@ -1,14 +1,8 @@
 import { useState } from "react";
-import {
-  Container,
-  Dialog,
-  ImageList,
-  ImageListItem
-} from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import InfoIcon from "@material-ui/icons/Info";
+import { Container, ImageList, ImageListItem } from "@material-ui/core";
 
 import classes from "./ImageOutput.module.scss";
+import ImgDialog from "../ImgDialog/ImgDialog";
 
 const ImageOutput = (props) => {
   const { images } = props;
@@ -23,7 +17,7 @@ const ImageOutput = (props) => {
     setIsOpen(true);
     setSelectedImg(imgSelected);
     setSelectedAlt(imgAlt);
-    setSelectedUser(imgUser)
+    setSelectedUser(imgUser);
   };
 
   const handleClose = () => {
@@ -49,22 +43,15 @@ const ImageOutput = (props) => {
         ))}
       </ImageList>
 
-      <Dialog
-        className={classes.Dialog}
-        modal="true"
-        open={isOpen}
-        onClose={handleClose}
-        maxWidth="md"
-      >
-        <CloseIcon onClick={handleClose} className={classes.CloseIcon} />
-        <img src={selectedImg} alt={selectedAlt} />
-        <InfoIcon onClick={handleInfo} className={classes.InfoIcon} />
-        {showInfo && (
-          <div className={classes.InfoContainer}>
-            <p>Author: {selectedUser}</p>
-          </div>
-        )}
-      </Dialog>
+      <ImgDialog
+        isOpen={isOpen}
+        handleClose={handleClose}
+        handleInfo={handleInfo}
+        showInfo={showInfo}
+        selectedImg={selectedImg}
+        selectedAlt={selectedAlt}
+        selectedUser={selectedUser}
+      />
     </Container>
   );
 };
