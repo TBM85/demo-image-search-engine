@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Container, ImageList, ImageListItem } from "@material-ui/core";
 
 import classes from "./ImageOutput.module.scss";
@@ -7,10 +8,10 @@ import ImgDialog from "../ImgDialog/ImgDialog";
 const ImageOutput = (props) => {
   const { images } = props;
 
-  const [selectedImg, setSelectedImg] = useState(null);
-  const [selectedAlt, setSelectedAlt] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [selectedPageUrl, setSelectedPageUrl] = useState(null);
+  const [selectedImg, setSelectedImg] = useState("");
+  const [selectedAlt, setSelectedAlt] = useState("");
+  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedPageUrl, setSelectedPageUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
@@ -69,3 +70,15 @@ const ImageOutput = (props) => {
 };
 
 export default ImageOutput;
+
+ImageOutput.propTypes = {
+  selectedImg: PropTypes.string,
+  selectedAlt: PropTypes.string,
+  selectedUser: PropTypes.string,
+  selectedPageUrl: PropTypes.string,
+  isOpen: PropTypes.bool,
+  showInfo: PropTypes.bool,
+  handleOpen: PropTypes.func,
+  handleClose: PropTypes.func,
+  handleInfo: PropTypes.func,
+};

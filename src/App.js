@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import "./App.scss";
 
 import Header from "./components/Header/Header";
@@ -42,3 +43,9 @@ const App = () => {
 };
 
 export default App;
+
+App.propTypes = {
+  images: PropTypes.object,
+  searchText: PropTypes.string,
+  changeSearchTextHandler: PropTypes.func,
+};
