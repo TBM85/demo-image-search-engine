@@ -36,19 +36,23 @@ const ImageOutput = (props) => {
 
   return (
     <Container className={classes.ImageContainer}>
-      <ImageList cols={4} className={classes.ImageList}>
-        {images.map((img) => (
-          <ImageListItem key={img.id} className={classes.ImageListItem}>
-            <img
-              src={img.largeImageURL}
-              alt={img.tags}
-              onClick={() =>
-                handleOpen(img.largeImageURL, img.tags, img.user, img.pageURL)
-              }
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
+      {images.length > 0 ? (
+        <ImageList cols={4} className={classes.ImageList}>
+          {images.map((img) => (
+            <ImageListItem key={img.id} className={classes.ImageListItem}>
+              <img
+                src={img.largeImageURL}
+                alt={img.tags}
+                onClick={() =>
+                  handleOpen(img.largeImageURL, img.tags, img.user, img.pageURL)
+                }
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      ) : (
+        <p>No image matches your search</p>
+      )}
 
       <ImgDialog
         isOpen={isOpen}
