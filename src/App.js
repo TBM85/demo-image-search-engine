@@ -6,6 +6,7 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import ImageOutput from "./components/ImageOutput/ImageOutput";
 import Search from "./components/Search/Search";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
       });
   }, [searchText]);
 
+  // Rewrite the text input field
   const changeSearchTextHandler = (event) => {
     setSearchText(event.target.value);
   };
@@ -38,6 +40,7 @@ const App = () => {
         changeSearchTextHandler={changeSearchTextHandler}
       />
       <ImageOutput images={images} />
+      <Footer images={images} />
     </div>
   );
 };
