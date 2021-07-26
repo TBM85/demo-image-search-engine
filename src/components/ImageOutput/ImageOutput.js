@@ -10,21 +10,26 @@ const ImageOutput = (props) => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [selectedAlt, setSelectedAlt] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedPageUrl, setSelectedPageUrl] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
-  const handleOpen = (imgSelected, imgAlt, imgUser) => {
+  // Open the Dialog component
+  const handleOpen = (imgSelected, imgAlt, imgUser, imgPageUrl) => {
     setIsOpen(true);
     setSelectedImg(imgSelected);
     setSelectedAlt(imgAlt);
     setSelectedUser(imgUser);
+    setSelectedPageUrl(imgPageUrl);
   };
 
+  // Close the Dialog component
   const handleClose = () => {
     setIsOpen(false);
     setShowInfo(false);
   };
 
+  // Show and hide image author information
   const handleInfo = () => {
     setShowInfo(!showInfo);
   };
@@ -37,7 +42,9 @@ const ImageOutput = (props) => {
             <img
               src={img.largeImageURL}
               alt={img.tags}
-              onClick={() => handleOpen(img.largeImageURL, img.tags, img.user)}
+              onClick={() =>
+                handleOpen(img.largeImageURL, img.tags, img.user, img.pageURL)
+              }
             />
           </ImageListItem>
         ))}
@@ -51,6 +58,7 @@ const ImageOutput = (props) => {
         selectedImg={selectedImg}
         selectedAlt={selectedAlt}
         selectedUser={selectedUser}
+        selectedPageUrl={selectedPageUrl}
       />
     </Container>
   );

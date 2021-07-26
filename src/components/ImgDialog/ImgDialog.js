@@ -2,6 +2,7 @@ import React from "react";
 import { Dialog } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 import classes from "./ImgDialog.module.scss";
 
@@ -14,7 +15,13 @@ const ImgDialog = (props) => {
     selectedImg,
     selectedAlt,
     selectedUser,
+    selectedPageUrl
   } = props;
+
+  // Leads to the source of the image on the pixabay page
+  const handleOpenSource = () => {
+    window.open(selectedPageUrl);
+  }
 
   return (
     <Dialog
@@ -30,6 +37,10 @@ const ImgDialog = (props) => {
       {showInfo && (
         <div className={classes.InfoContainer}>
           <p>Author: {selectedUser}</p>
+          <OpenInNewIcon
+            className={classes.OpenInNewIcon}
+            onClick={handleOpenSource}
+          />
         </div>
       )}
     </Dialog>

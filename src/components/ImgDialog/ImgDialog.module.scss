@@ -13,7 +13,7 @@
   font-size: 2em !important;
   padding: 0.25em;
   bottom: 0;
-  z-index: 1;
+  z-index: 3;
   cursor: pointer;
 }
 
@@ -27,5 +27,18 @@
 
   p {
     padding-left: 3em;
+    width: calc(100% - 5em);
+  }
+
+  .OpenInNewIcon {
+    position: absolute;
+    float: right;
+    right: 0;
+    z-index: 3;
+    color: white;
+    font-size: 2em !important;
+    padding: 0.25em;
+    bottom: 0;
+    cursor: pointer;
   }
 }
