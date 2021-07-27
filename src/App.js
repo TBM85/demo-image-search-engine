@@ -39,7 +39,7 @@ const App = () => {
         searchText={searchText}
         changeSearchTextHandler={changeSearchTextHandler}
       />
-      <ImageOutput images={images} />
+      <ImageOutput searchText={searchText} images={images} />
       <Footer images={images} />
     </div>
   );
