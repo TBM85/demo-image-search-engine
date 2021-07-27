@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import SyncLoader from "react-spinners/SyncLoader";
 import "./App.scss";
 
 import Header from "./components/Header/Header";
@@ -40,7 +41,16 @@ const App = () => {
         searchText={searchText}
         changeSearchTextHandler={changeSearchTextHandler}
       />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <SyncLoader
+            loading={true}
+            color="#005F85"
+            size="20px"
+            margin="5px"
+          />
+        }
+      >
         <ImageOutput searchText={searchText} images={images} />
       </Suspense>
       <Footer images={images} />
