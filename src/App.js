@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import "./App.scss";
 
 import Header from "./components/Header/Header";
-import ImageOutput from "./components/ImageOutput/ImageOutput";
 import Search from "./components/Search/Search";
 import Footer from "./components/Footer/Footer";
+
+const ImageOutput = lazy(() => import("./components/ImageOutput/ImageOutput"));
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -39,7 +40,9 @@ const App = () => {
         searchText={searchText}
         changeSearchTextHandler={changeSearchTextHandler}
       />
-      <ImageOutput searchText={searchText} images={images} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ImageOutput searchText={searchText} images={images} />
+      </Suspense>
       <Footer images={images} />
     </div>
   );
