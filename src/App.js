@@ -1,12 +1,12 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import SyncLoader from "react-spinners/SyncLoader";
 import "./App.scss";
 
 import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
 import Footer from "./components/Footer/Footer";
+import Loader from "./components/UI/Loader/Loader";
 
 const ImageOutput = lazy(() => import("./components/ImageOutput/ImageOutput"));
 
@@ -19,7 +19,7 @@ const App = () => {
       .get(
         `${process.env.REACT_APP_BASE_URL}/?key=${
           process.env.REACT_APP_API_KEY
-        }&q=${searchText}&image_type=photo&orientation=horizontal&per_page=${36}&safesearch=true`
+        }&q=${searchText}&image_type=photo&orientation=horizontal&per_page=${36}&imageWidth=${150}&safesearch=true`
       )
       .then((response) => {
         setImages(response.data.hits);
@@ -42,14 +42,7 @@ const App = () => {
         changeSearchTextHandler={changeSearchTextHandler}
       />
       <Suspense
-        fallback={
-          <SyncLoader
-            loading={true}
-            color="#005F85"
-            size="20px"
-            margin="5px"
-          />
-        }
+        fallback={<Loader />}
       >
         <ImageOutput searchText={searchText} images={images} />
       </Suspense>

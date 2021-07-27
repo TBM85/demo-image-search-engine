@@ -42,7 +42,7 @@ const ImageOutput = (props) => {
           {images.map((img) => (
             <ImageListItem key={img.id} className={classes.ImageListItem}>
               <img
-                src={img.largeImageURL}
+                src={img.webformatURL}
                 alt={img.tags}
                 onClick={() =>
                   handleOpen(img.largeImageURL, img.tags, img.user, img.pageURL)

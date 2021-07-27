@@ -14,6 +14,7 @@ const Search = (props) => {
       <TextField
         className={classes.TextField}
         name="searchText"
+        id="searchText"
         label="Search for Images"
         value={searchText}
         onChange={changeSearchTextHandler}
