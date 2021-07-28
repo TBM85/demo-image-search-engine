@@ -6,7 +6,7 @@ import classes from "./ImageOutput.module.scss";
 import ImgDialog from "../ImgDialog/ImgDialog";
 
 const ImageOutput = (props) => {
-  const { searchText, images } = props;
+  const { searchText, images, totalImages } = props;
 
   const [selectedImg, setSelectedImg] = useState("");
   const [selectedAlt, setSelectedAlt] = useState("");
@@ -37,6 +37,11 @@ const ImageOutput = (props) => {
 
   return (
     <Container className={classes.ImageContainer}>
+      {searchText.length > 0 && images.length === 0 ? (
+        <p className={classes.NoImages}>No image matches your search</p>
+      ) : (
+        <p className={classes.TotalImages}>{totalImages} images</p>
+      )}
       {images.length > 0 && (
         <ImageList cols={4} className={classes.ImageList}>
           {images.map((img) => (
@@ -51,9 +56,6 @@ const ImageOutput = (props) => {
             </ImageListItem>
           ))}
         </ImageList>
-      )}
-      {searchText.length > 0 && images.length === 0 && (
-        <p>No image matches your search</p>
       )}
 
       <ImgDialog

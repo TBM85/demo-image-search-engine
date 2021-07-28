@@ -13,6 +13,7 @@ const ImageOutput = lazy(() => import("./components/ImageOutput/ImageOutput"));
 
 const App = () => {
   const [images, setImages] = useState([]);
+  const [totalImages, setTotalImages] = useState("");
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const App = () => {
       )
       .then((response) => {
         setImages(response.data.hits);
+        setTotalImages(response.data.total);
       })
       .catch((error) => {
         console.log(error);
@@ -42,10 +44,12 @@ const App = () => {
         searchText={searchText}
         changeSearchTextHandler={changeSearchTextHandler}
       />
-      <Suspense
-        fallback={<Loader />}
-      >
-        <ImageOutput searchText={searchText} images={images} />
+      <Suspense fallback={<Loader />}>
+        <ImageOutput
+          searchText={searchText}
+          images={images}
+          totalImages={totalImages}
+        />
         <ImgPagination />
       </Suspense>
 
