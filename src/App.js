@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/UI/Loader/Loader";
+import ImgPagination from "./components/ImgPagination/ImgPagination";
 
 const ImageOutput = lazy(() => import("./components/ImageOutput/ImageOutput"));
 
@@ -45,7 +46,9 @@ const App = () => {
         fallback={<Loader />}
       >
         <ImageOutput searchText={searchText} images={images} />
+        <ImgPagination />
       </Suspense>
+
       <Footer images={images} />
     </div>
   );
