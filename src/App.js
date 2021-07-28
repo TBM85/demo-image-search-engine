@@ -50,7 +50,9 @@ const App = () => {
           images={images}
           totalImages={totalImages}
         />
-        <ImgPagination />
+        {totalImages > 36 && (
+          <ImgPagination />
+        )}
       </Suspense>
 
       <Footer images={images} />
