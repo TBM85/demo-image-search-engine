@@ -17,13 +17,29 @@ const App = () => {
   const [totalHits, setTotalHits] = useState(Number);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
+  const [isBigDevice, setIsBigDevice] = useState(Boolean);
+
+  // Sets the current screen size
+  const changeDevicesHandler = (bigDevice) => {
+    setIsBigDevice(bigDevice.matches);
+  };
+
+  useEffect(() => {
+    const bigDevice = window.matchMedia("(min-width: 768px)");
+    bigDevice.addEventListener("change", changeDevicesHandler);
+    changeDevicesHandler(bigDevice);
+
+    return () => {
+      bigDevice.removeEventListener("change", changeDevicesHandler);
+    };
+  }, []);
 
   useEffect(() => {
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/?key=${
           process.env.REACT_APP_API_KEY
-        }&q=${searchText}&image_type=photo&orientation=horizontal&page=${page}&per_page=${36}&imageWidth=${150}&safesearch=true`
+        }&q=${searchText}&image_type=photo&orientation=horizontal&page=${page}&per_page=${isBigDevice ? 36 : 12}&imageWidth=${150}&safesearch=true`
       )
       .then((response) => {
         setImages(response.data.hits);
@@ -33,7 +49,7 @@ const App = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [searchText, page]);
+  }, [searchText, page, isBigDevice]);
 
   // Rewrite the text input field
   const changeSearchTextHandler = (event) => {
@@ -69,6 +85,7 @@ const App = () => {
           <ImgPagination
             page={page}
             totalHits={totalHits}
+            isBigDevice={isBigDevice}
             changeCurrentPageHandler={changeCurrentPageHandler}
           />
         )}
@@ -85,6 +102,9 @@ App.propTypes = {
   images: PropTypes.object,
   searchText: PropTypes.string,
   changeSearchTextHandler: PropTypes.func,
+  changeCurrentPageHandler: PropTypes.func,
   page: PropTypes.number,
   totalImages: PropTypes.number,
+  isBigDevice: PropTypes.bool,
+  changeDevicesHandler: PropTypes.func
 };

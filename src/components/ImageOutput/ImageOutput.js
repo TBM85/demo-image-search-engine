@@ -35,12 +35,14 @@ const ImageOutput = (props) => {
     setShowInfo(!showInfo);
   };
 
-  const stringToAdd = "340.jpg";
+  const stringToAdd = "340";
 
   // Replace the width value of the image in the string
   const replaceSize = (str, stringToAdd) => {
     return (
-      str.substring(0, str.length - 7) + stringToAdd
+      str.substring(0, str.length - 7) +
+      stringToAdd +
+      str.substring(str.length - 4, str.length)
     );
   };
 
@@ -93,4 +95,5 @@ ImageOutput.propTypes = {
   handleOpen: PropTypes.func,
   handleClose: PropTypes.func,
   handleInfo: PropTypes.func,
+  replaceSize: PropTypes.func
 };
