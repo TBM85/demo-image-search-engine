@@ -38,10 +38,16 @@ const App = () => {
   // Rewrite the text input field
   const changeSearchTextHandler = (event) => {
     setSearchText(event.target.value);
+
+    // Returns the pagination to one, each time a new word is searched
+    setPage(1);
   };
 
+  // Define the current page
   const changeCurrentPageHandler = (event, newPage) => {
     setPage(newPage);
+
+    // Every time the pagination changes, the page scrolls up
     window["scrollTo"]({ top: 0, behavior: "smooth"});
   };
 
@@ -58,6 +64,7 @@ const App = () => {
           images={images}
           totalImages={totalImages}
         />
+
         {totalImages > 36 && (
           <ImgPagination
             page={page}
@@ -65,9 +72,9 @@ const App = () => {
             changeCurrentPageHandler={changeCurrentPageHandler}
           />
         )}
-      </Suspense>
 
-      <Footer images={images} />
+        <Footer images={images} />
+      </Suspense>
     </div>
   );
 };

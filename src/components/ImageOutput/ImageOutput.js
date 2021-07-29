@@ -35,6 +35,15 @@ const ImageOutput = (props) => {
     setShowInfo(!showInfo);
   };
 
+  const stringToAdd = "340.jpg";
+
+  // Replace the width value of the image in the string
+  const replaceSize = (str, stringToAdd) => {
+    return (
+      str.substring(0, str.length - 7) + stringToAdd
+    );
+  };
+
   return (
     <Container className={classes.ImageContainer}>
       {searchText.length > 0 && images.length === 0 ? (
@@ -47,7 +56,7 @@ const ImageOutput = (props) => {
           {images.map((img) => (
             <ImageListItem key={img.id} className={classes.ImageListItem}>
               <img
-                src={img.webformatURL}
+                src={replaceSize(img.webformatURL, stringToAdd)}
                 alt={img.tags}
                 onClick={() =>
                   handleOpen(img.largeImageURL, img.tags, img.user, img.pageURL)
