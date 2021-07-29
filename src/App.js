@@ -14,6 +14,7 @@ const ImageOutput = lazy(() => import("./components/ImageOutput/ImageOutput"));
 const App = () => {
   const [images, setImages] = useState([]);
   const [totalImages, setTotalImages] = useState(Number);
+  const [totalHits, setTotalHits] = useState(Number);
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
 
@@ -27,6 +28,7 @@ const App = () => {
       .then((response) => {
         setImages(response.data.hits);
         setTotalImages(response.data.total);
+        setTotalHits(response.data.totalHits);
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +61,7 @@ const App = () => {
         {totalImages > 36 && (
           <ImgPagination
             page={page}
-            totalImages={totalImages}
+            totalHits={totalHits}
             changeCurrentPageHandler={changeCurrentPageHandler}
           />
         )}
