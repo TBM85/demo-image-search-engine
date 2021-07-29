@@ -4,7 +4,7 @@ import { Pagination } from "@material-ui/lab";
 import classes from "./ImgPagination.module.scss";
 
 const ImgPagination = (props) => {
-  const { totalImages } = props;
+  const { totalImages, page, changeCurrentPageHandler } = props;
 
   const totalPages = Math.ceil(totalImages / 36);
 
@@ -15,6 +15,8 @@ const ImgPagination = (props) => {
         boundaryCount={1}
         shape="rounded"
         size="small"
+        page={page}
+        onChange={changeCurrentPageHandler}
       />
     </div>
   );
