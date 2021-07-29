@@ -40,6 +40,7 @@ const App = () => {
 
   const changeCurrentPageHandler = (event, newPage) => {
     setPage(newPage);
+    window["scrollTo"]({ top: 0, behavior: "smooth"});
   };
 
   return (
