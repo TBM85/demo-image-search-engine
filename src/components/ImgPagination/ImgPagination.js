@@ -3,10 +3,19 @@ import { Pagination } from "@material-ui/lab";
 
 import classes from "./ImgPagination.module.scss";
 
-const ImgPagination = () => {
+const ImgPagination = (props) => {
+  const { totalImages } = props;
+
+  const totalPages = Math.ceil(totalImages / 36);
+
   return (
     <div className={classes.Pagination}>
-      <Pagination count={10} shape="rounded" size="small" />
+      <Pagination
+        count={totalPages}
+        boundaryCount={1}
+        shape="rounded"
+        size="small"
+      />
     </div>
   );
 };
